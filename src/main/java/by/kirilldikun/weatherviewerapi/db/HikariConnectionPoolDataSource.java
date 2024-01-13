@@ -1,5 +1,6 @@
 package by.kirilldikun.weatherviewerapi.db;
 
+import by.kirilldikun.weatherviewerapi.common.util.PropertySource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.AccessLevel;
@@ -16,9 +17,9 @@ public class HikariConnectionPoolDataSource {
     private static final HikariDataSource ds;
 
     static {
-        config.setJdbcUrl("jdbc:postgresql://localhost:5435/weather-viewer-api");
-        config.setUsername("postgres");
-        config.setPassword("1234");
+        config.setJdbcUrl(PropertySource.get("url"));
+        config.setUsername(PropertySource.get("username"));
+        config.setPassword(PropertySource.get("password"));
         config.setDriverClassName("org.postgresql.Driver");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
