@@ -17,9 +17,9 @@ public class HikariConnectionPoolDataSource {
     private static final HikariDataSource ds;
 
     static {
-        config.setJdbcUrl(PropertySource.get("url"));
-        config.setUsername(PropertySource.get("username"));
-        config.setPassword(PropertySource.get("password"));
+        config.setJdbcUrl(PropertySource.get("database.url"));
+        config.setUsername(PropertySource.get("database.username"));
+        config.setPassword(PropertySource.get("database.password"));
         config.setDriverClassName("org.postgresql.Driver");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
