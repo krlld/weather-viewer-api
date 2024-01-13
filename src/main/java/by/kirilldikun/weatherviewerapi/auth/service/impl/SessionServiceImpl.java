@@ -6,6 +6,7 @@ import by.kirilldikun.weatherviewerapi.auth.exception.SessionNotFoundException;
 import by.kirilldikun.weatherviewerapi.auth.model.Session;
 import by.kirilldikun.weatherviewerapi.auth.model.User;
 import by.kirilldikun.weatherviewerapi.auth.service.SessionService;
+import by.kirilldikun.weatherviewerapi.common.util.PropertySource;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class SessionServiceImpl implements SessionService {
 
-    private static final long duration = 60 * 60 * 24;
+    private static final long duration = Long.parseLong(PropertySource.get("session.duration"));
 
     private final UserDao userDao;
 
